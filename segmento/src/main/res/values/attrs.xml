@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SegmentedProgressBar">
+        <attr name="clock_wise" format="boolean" />
+        <attr name="inner_progress_color" format="color" />
+        <attr name="outer_progress_color" format="color" />
+        <attr name="segment_color" format="color" />
+        <attr name="inner_progress_width" format="dimension" />
+        <attr name="outer_progress_width" format="dimension" />
+        <attr name="shadow_width" format="dimension" />
+        <attr name="segment_size" format="dimension" />
+        <attr name="max_progress" format="float" />
+        <attr name="progress" format="float" />
+        <attr name="scaleFactor" format="float" />
+        <attr name="scaleAnimDuration" format="integer" />
+    </declare-styleable>
+
+</resources>

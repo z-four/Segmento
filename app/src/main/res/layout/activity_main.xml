@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context="com.z4.segmentosample.MainActivity">
+
+    <Button
+        android:id="@+id/remove_segment_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/remove_segment_button_margins"
+        android:background="@drawable/remove_segment_button_background"
+        android:text="@string/remove_segment"
+        android:textColor="@android:color/white" />
+
+    <SeekBar
+        android:id="@+id/outer_progress_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/remove_segment_button"
+        android:layout_marginEnd="@dimen/seek_bar_margins_horizontal"
+        android:layout_marginStart="@dimen/seek_bar_margins_horizontal" />
+
+    <TextView
+        android:id="@+id/outer_progress_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/outer_progress_seek_bar"
+        android:layout_centerHorizontal="true"
+        android:text="@string/outer_progress" />
+
+    <SeekBar
+        android:id="@+id/inner_progress_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/outer_progress_text_view"
+        android:layout_marginBottom="@dimen/seek_bar_margins_vertical"
+        android:layout_marginEnd="@dimen/seek_bar_margins_horizontal"
+        android:layout_marginStart="@dimen/seek_bar_margins_horizontal" />
+
+    <TextView
+        android:id="@+id/inner_progress_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/inner_progress_seek_bar"
+        android:layout_centerHorizontal="true"
+        android:text="@string/inner_progress" />
+
+    <SeekBar
+        android:id="@+id/progress_duration_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/inner_progress_text_view"
+        android:layout_marginBottom="@dimen/seek_bar_margins_vertical"
+        android:layout_marginEnd="@dimen/seek_bar_margins_horizontal"
+        android:layout_marginStart="@dimen/seek_bar_margins_horizontal" />
+
+    <TextView
+        android:id="@+id/progress_duration_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/progress_duration_seek_bar"
+        android:layout_centerHorizontal="true"
+        android:text="@string/duration" />
+
+
+    <SeekBar
+        android:id="@+id/shadow_width_seek_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/progress_duration_text_view"
+        android:layout_marginBottom="@dimen/seek_bar_margins_vertical"
+        android:layout_marginEnd="@dimen/seek_bar_margins_horizontal"
+        android:layout_marginStart="@dimen/seek_bar_margins_horizontal" />
+
+    <TextView
+        android:id="@+id/shadow_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/shadow_width_seek_bar"
+        android:layout_centerHorizontal="true"
+        android:text="@string/shadow" />
+
+    <com.z4.segmento.SegmentedProgressBar
+        android:id="@+id/segmented_progress_bar"
+        android:layout_width="@dimen/segmented_progress_bar_size"
+        android:layout_height="@dimen/segmented_progress_bar_size"
+        android:layout_above="@id/shadow_text_view"
+       android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/segmented_progress_margins_vertical"
+        app:inner_progress_color="@color/innerProgressColor"
+        app:inner_progress_width="@dimen/segmented_progress_bar_outer_circle_width"
+        app:max_progress="@integer/segmented_progress_bar_max_progress"
+        app:outer_progress_color="@color/outerProgressBlueColor"
+        app:outer_progress_width="@dimen/segmented_progress_bar_outer_circle_width"
+        app:shadow_width="@dimen/segmented_progress_bar_shadow_width" />
+
+</RelativeLayout>

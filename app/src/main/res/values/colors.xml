@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4A8DE1</color>
+    <color name="colorPrimaryDark">@android:color/white</color>
+    <color name="colorAccent">#4A8DE1</color>
+
+    <color name="innerProgressColor">@android:color/white</color>
+
+    <color name="outerProgressRedColor">#fb1f1f</color>
+    <color name="outerProgressOrangeColor">#ffc318</color>
+    <color name="outerProgressGreenColor">#53e981</color>
+    <color name="outerProgressBlueColor">#22cdde</color>
+
+    <color name="remove_segment_button_background">#4A8DE1</color>
+    <color name="remove_segment_button_background_pressed">#2c7cdd</color>
+</resources>

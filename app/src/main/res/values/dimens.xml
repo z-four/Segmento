@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="segmented_progress_bar_max_progress">10000</integer>
+
+    <dimen name="segmented_progress_bar_outer_circle_width">15dp</dimen>
+    <dimen name="segmented_progress_bar_shadow_width">30dp</dimen>
+    <dimen name="segmented_progress_margins_vertical">40dp</dimen>
+    <dimen name="segmented_progress_bar_size">225dp</dimen>
+
+    <dimen name="remove_segment_button_margins">20dp</dimen>
+    <dimen name="remove_segment_button_corner_radius">5dp</dimen>
+
+    <dimen name="seek_bar_margins_horizontal">20dp</dimen>
+    <dimen name="seek_bar_margins_vertical">30dp</dimen>
+
+</resources>

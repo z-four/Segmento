@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Segmento</string>
+
+    <string name="remove_segment">Remove segment</string>
+    <string name="outer_progress">Outer progress</string>
+    <string name="inner_progress">Inner progress</string>
+    <string name="duration">Duration</string>
+    <string name="shadow">Shadow</string>
+</resources>
