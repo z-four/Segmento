@@ -97,7 +97,7 @@ Installation
 
 ```groovy
 dependencies {
-  compile 'com.github.z-four:segmento:1.0'
+  compile 'com.github.z-four:segmento:1.0.2'
 }
 ```
 
