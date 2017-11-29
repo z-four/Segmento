@@ -92,12 +92,23 @@ Simple android view component that can be used to showing a round segmented prog
           }
      });
 ```
+##### OnSegmentCountChangeListener:
+
+```java
+ mSegmentedProgressBar.setOnSegmentCountChangeListener(new OnSegmentCountChangedListener() {
+            
+          @Override
+          public void onSegmentCountChanged(SegmentedProgressBar progressBar, int segmentCount) {
+                
+          }
+     });
+```
 Installation
 --------
 
 ```groovy
 dependencies {
-  compile 'com.github.z-four:segmento:1.0.2'
+  compile 'com.github.z-four:segmento:1.0.3'
 }
 ```
 
