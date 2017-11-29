@@ -99,7 +99,7 @@ Simple android view component that can be used to showing a round segmented prog
             
           @Override
           public void onSegmentCountChanged(SegmentedProgressBar progressBar, int segmentCount) {
-                
+               //print segment count
           }
      });
 ```
