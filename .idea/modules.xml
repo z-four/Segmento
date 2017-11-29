@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Segmentio.iml" filepath="$PROJECT_DIR$/Segmentio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Segmento.iml" filepath="$PROJECT_DIR$/Segmento.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/segmento/segmentio.iml" filepath="$PROJECT_DIR$/segmento/segmentio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/segmento/segmento.iml" filepath="$PROJECT_DIR$/segmento/segmento.iml" />
       <module fileurl="file://$PROJECT_DIR$/segmento/segmento.iml" filepath="$PROJECT_DIR$/segmento/segmento.iml" />
     </modules>
   </component>

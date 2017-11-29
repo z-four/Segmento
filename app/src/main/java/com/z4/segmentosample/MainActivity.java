@@ -1,16 +1,18 @@
 package com.z4.segmentosample;
 
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 
 import com.z4.segmento.SegmentedProgressBar;
+import com.z4.segmento.listeners.OnProgressChangedListener;
+import com.z4.segmento.listeners.OnSegmentCountChangedListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
-        SegmentedProgressBar.OnProgressbarChangeListener, SeekBar.OnSeekBarChangeListener {
+        OnProgressChangedListener, OnSegmentCountChangedListener, SeekBar.OnSeekBarChangeListener {
 
     private final static int MAX_PROGRESS_PERCENT = 100;
     private final static int MIN_PROGRESS_PERCENT = 20;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mSegmentedProgressBar = findViewById(R.id.segmented_progress_bar);
         mSegmentedProgressBar.setOnProgressbarChangeListener(this);
+        mSegmentedProgressBar.setOnSegmentCountChangeListener(this);
 
         setupSeekBar(R.id.outer_progress_seek_bar, maxProgress, halfProgress);
         setupSeekBar(R.id.inner_progress_seek_bar, maxProgress, halfProgress);
@@ -99,7 +102,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSegmentedProgressBar.removeLastSegment();
     }
 
-    //Segmented progress bar listener
+    //Segmented progress bar listeners
+
+    @Override
+    public void onSegmentCountChanged(SegmentedProgressBar progressBar, int segmentCount) {
+        //segment count changed
+    }
 
     @Override
     public void onProgressChanged(SegmentedProgressBar progressBar, float progress) {
@@ -118,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onStopTracking(SegmentedProgressBar progressBar) {}
+
 
     //Seek bar listener
 

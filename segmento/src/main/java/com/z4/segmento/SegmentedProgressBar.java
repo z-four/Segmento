@@ -13,10 +13,13 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
-
 import java.util.Stack;
 
+import com.z4.segmento.listeners.OnProgressChangedListener;
+import com.z4.segmento.listeners.OnSegmentCountChangedListener;
+
 import static com.z4.segmento.utils.AnimationUtils.scale;
+import static com.z4.segmento.utils.SegmentoUtils.getDefaultProgressPaint;
 
 /**
  * Created by z4
@@ -43,7 +46,9 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
 
     private Stack<Segment> mSegmentStack;
     private ObjectAnimator mProgressAnimator;
-    private OnProgressbarChangeListener mOnProgressChangeListener;
+
+    private OnProgressChangedListener mOnProgressChangedListener;
+    private OnSegmentCountChangedListener mOnSegmentCountChangedListener;
 
     private float mScaleFactor;
     private long mScaleAnimDuration;
@@ -59,14 +64,6 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
     private int mProgressAngle, mStartAngle = -90;
 
     private boolean mClockWise;
-
-    public interface OnProgressbarChangeListener {
-        void onProgressChanged(SegmentedProgressBar progressBar, float progress);
-
-        void onStartTracking(SegmentedProgressBar progressBar);
-
-        void onStopTracking(SegmentedProgressBar progressBar);
-    }
 
     public SegmentedProgressBar(Context context) {
         super(context);
@@ -146,9 +143,7 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
             mScaleAnimDuration = typedArray.getInt(R.styleable.SegmentedProgressBar_scaleAnimDuration,
                     DEFAULT_SCALE_ANIMATION_DURATION);
 
-        } finally {
-            typedArray.recycle();
-        }
+        } finally { typedArray.recycle(); }
     }
 
     private void init() {
@@ -174,17 +169,6 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
         setOnTouchListener(this);
     }
 
-    private Paint getDefaultProgressPaint(float width, int color) {
-        Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        paint.setStrokeWidth(width);
-        paint.setDither(true);
-        paint.setFilterBitmap(true);
-        paint.setColor(color);
-        paint.setStyle(Paint.Style.STROKE);
-
-        return paint;
-    }
-
     private void addSegment() {
         if (mCurrProgress >= mMaxProgress) return;
         if (mSegmentStack == null) mSegmentStack = new Stack<>();
@@ -204,6 +188,7 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
 
     public void removeAllSegments() {
         if (mSegmentStack != null) mSegmentStack.removeAllElements();
+        notifySegmentCountChanged(getSegmentsCount());
     }
 
     public Stack<Segment> getSegments() {
@@ -212,7 +197,10 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
 
     public void removeLastSegment() {
         if (mSegmentStack != null) {
+            int lastSegmentCount = getSegmentsCount();
             Segment segment = !mSegmentStack.empty() ? mSegmentStack.pop() : null;
+
+            if (mCurrProgress > 0) notifySegmentCountChanged(lastSegmentCount);
 
             if (segment != null) setProgress(segment.getCurrProgress());
             else if (mSegmentStack.size() == 0 && mCurrProgress != 0) setProgress(0);
@@ -232,8 +220,40 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
         if (mClockWise) mProgressAngle = mProgressAngle > 0 ? -mProgressAngle : mProgressAngle;
     }
 
-    public void setOnProgressbarChangeListener(OnProgressbarChangeListener onProgressbarChangeListener) {
-        mOnProgressChangeListener = onProgressbarChangeListener;
+    //-- Segments listener methods
+
+    public void setOnSegmentCountChangeListener(OnSegmentCountChangedListener onSegmentCountChangeListener) {
+        mOnSegmentCountChangedListener = onSegmentCountChangeListener;
+    }
+
+    private void notifySegmentCountChanged(int count) {
+        if (mOnSegmentCountChangedListener != null) {
+            mOnSegmentCountChangedListener.onSegmentCountChanged(this, count);
+        }
+    }
+
+    //-- Progress listener methods
+
+    public void setOnProgressbarChangeListener(OnProgressChangedListener onProgressbarChangeListener) {
+        mOnProgressChangedListener = onProgressbarChangeListener;
+    }
+
+    private void notifyProgressChanged(float progress) {
+        if (mOnProgressChangedListener != null) {
+            mOnProgressChangedListener.onProgressChanged(this, progress);
+        }
+    }
+
+    private void notifyStartTracking() {
+        if (mOnProgressChangedListener != null) {
+            mOnProgressChangedListener.onStartTracking(this);
+        }
+    }
+
+    private void notifyStopTracking() {
+        if (mOnProgressChangedListener != null) {
+            mOnProgressChangedListener.onStopTracking(this);
+        }
     }
 
     //-- Progress bar setup methods
@@ -381,26 +401,6 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
         mOuterCircle.getShader().setLocalMatrix(matrix);
     }
 
-    //OnProgressChangedListener
-
-    private void notifyProgressChanged(float progress) {
-        if (mOnProgressChangeListener != null) {
-            mOnProgressChangeListener.onProgressChanged(this, progress);
-        }
-    }
-
-    private void notifyStartTracking() {
-        if (mOnProgressChangeListener != null) {
-            mOnProgressChangeListener.onStartTracking(this);
-        }
-    }
-
-    private void notifyStopTracking() {
-        if (mOnProgressChangeListener != null) {
-            mOnProgressChangeListener.onStopTracking(this);
-        }
-    }
-
     //-- OnTouchListener
 
     @Override
@@ -419,6 +419,7 @@ public class SegmentedProgressBar extends View implements View.OnTouchListener {
                 stopProgressAnimation();
                 scale(this, DEFAULT_MIN_SCALE_FACTOR, mScaleAnimDuration);
                 notifyStopTracking();
+                notifySegmentCountChanged(getSegmentsCount() + 1);
                 break;
         }
         return true;
