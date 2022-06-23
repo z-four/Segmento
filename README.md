@@ -126,7 +126,7 @@ allprojects {
 License
 -------
 
-Copyright 2017 Dmitriy Zhyzhko
+Copyright 2017 Dmytro Zhyzhko
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
