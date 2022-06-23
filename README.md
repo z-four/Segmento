@@ -5,10 +5,10 @@
 # Segmento
 Simple android view component that can be used to showing a round segmented progress bar
 
-<p align="center">
-  <img width="250px" src="/images/size.gif">
-  <img width="250px" src="/images/remove.gif">
-  <img width="250px" src="/images/shadow.gif">
+<p float="left">
+  <img src="/images/size.gif" width="310" />
+  <img src="/images/remove.gif" width="310" /> 
+  <img src="/images/shadow.gif" width="310" />
 </p>
 
 ## Usage
@@ -78,17 +78,17 @@ Simple android view component that can be used to showing a round segmented prog
             
           @Override
           public void onProgressChanged(SegmentedProgressBar progressBar, float progress) {
-              //progress changed
+              // Progress changed
           }
 
           @Override
           public void onStartTracking(SegmentedProgressBar progressBar) {
-              //start tracking
+              // Start tracking
           }
 
           @Override
           public void onStopTracking(SegmentedProgressBar progressBar) {
-              //stop tracking
+              // Stop tracking
           }
      });
 ```
@@ -99,7 +99,7 @@ Simple android view component that can be used to showing a round segmented prog
             
           @Override
           public void onSegmentCountChanged(SegmentedProgressBar progressBar, int segmentCount) {
-               //print segment count
+               // Get segment count
           }
      });
 ```
