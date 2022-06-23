@@ -3,7 +3,7 @@
 </p>
 
 # Segmento
-Simple android view component that can be used to showing a round segmented progress bar
+Simple android view component that can be used to display a segmented progress bar
 
 <p float="left">
   <img src="/images/size.gif" width="270" />
