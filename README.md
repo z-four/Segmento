@@ -6,9 +6,9 @@
 Simple android view component that can be used to showing a round segmented progress bar
 
 <p float="left">
-  <img src="/images/size.gif" width="310" />
-  <img src="/images/remove.gif" width="310" /> 
-  <img src="/images/shadow.gif" width="310" />
+  <img src="/images/size.gif" width="270" />
+  <img src="/images/remove.gif" width="270" /> 
+  <img src="/images/shadow.gif" width="270" />
 </p>
 
 ## Usage
